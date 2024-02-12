@@ -106,6 +106,15 @@ void AudioPlugin_EQAudioProcessor::prepareToPlay (double sampleRate, int samples
 
     leftChain.prepare(spec);
     rightChain.prepare(spec);
+
+    auto chainSettings = getChainSettings(apvts);
+
+    auto peakCoefficients = juce::dsp::IIR::Coefficients<float>::makePeakFilter(sampleRate, 
+                                                                                chainSettings.peakFreq, 
+                                                                                chainSettings.peakQuality,
+                                                                                juce::Decibels::decibelsToGain(chainSettings.peakGainInDecibels));
+    *leftChain.get<ChainPositions::Peak>().coefficients = *peakCoefficients;
+    *rightChain.get<ChainPositions::Peak>().coefficients = *peakCoefficients;
 }
 
 void AudioPlugin_EQAudioProcessor::releaseResources()
@@ -155,6 +164,17 @@ void AudioPlugin_EQAudioProcessor::processBlock (juce::AudioBuffer<float>& buffe
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
 
+
+    
+    auto chainSettings = getChainSettings(apvts);
+
+    auto peakCoefficients = juce::dsp::IIR::Coefficients<float>::makePeakFilter(getSampleRate(),
+        chainSettings.peakFreq,
+        chainSettings.peakQuality,
+        juce::Decibels::decibelsToGain(chainSettings.peakGainInDecibels));
+    *leftChain.get<ChainPositions::Peak>().coefficients = *peakCoefficients;
+    *rightChain.get<ChainPositions::Peak>().coefficients = *peakCoefficients;
+
     juce::dsp::AudioBlock<float> block(buffer);
 
     auto leftBlock = block.getSingleChannelBlock(0);
@@ -179,8 +199,8 @@ bool AudioPlugin_EQAudioProcessor::hasEditor() const
 
 juce::AudioProcessorEditor* AudioPlugin_EQAudioProcessor::createEditor()
 {
-    return new AudioPlugin_EQAudioProcessorEditor (*this);
-    //return new juce::GenericAudioProcessorEditor(*this);
+    // return new AudioPlugin_EQAudioProcessorEditor (*this);
+    return new juce::GenericAudioProcessorEditor(*this); 
 }
 
 //==============================================================================
@@ -197,6 +217,23 @@ void AudioPlugin_EQAudioProcessor::setStateInformation (const void* data, int si
     // whose contents will have been created by the getStateInformation() call.
 }
 
+
+ChainSettings getChainSettings(juce::AudioProcessorValueTreeState& apvts)
+{
+    ChainSettings settings;
+
+    settings.lowCutFreq = apvts.getRawParameterValue("LowCut Freq")->load();
+    settings.highCutFreq = apvts.getRawParameterValue("HighCut Freq")->load();
+    settings.peakFreq = apvts.getRawParameterValue("Peak Freq")->load();
+    settings.peakGainInDecibels = apvts.getRawParameterValue("Peak Gain")->load();
+    settings.peakQuality = apvts.getRawParameterValue("Peak Quality")->load();
+    settings.lowCutSlope = apvts.getRawParameterValue("LowCut Slope")->load();
+    settings.highCutSlope = apvts.getRawParameterValue("HighCut Slope")->load();
+   
+
+
+    return settings;
+}
 
 juce::AudioProcessorValueTreeState::ParameterLayout
     AudioPlugin_EQAudioProcessor::createParameterLayout()

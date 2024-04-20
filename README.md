@@ -1,4 +1,4 @@
-![plugin_f](https://github.com/lagooneration/AudioPlugin_EQ/assets/142176950/a4cabb4d-4d2d-45ac-ba41-aa868ff407ef)## DOCUMENTATION
+## DOCUMENTATION
 
 - Click [JUCE](https://juce.com/learn/documentation/).
 
@@ -22,7 +22,7 @@ cmake --build cmake-build --target DemoRunner
 
 ## Overview
 - Color coded description of the EQ knobs
-<img  widht="100%" height="auto" src="sources/plugin_f.png">
+![plugin_f](https://github.com/lagooneration/AudioPlugin_EQ/assets/142176950/a4cabb4d-4d2d-45ac-ba41-aa868ff407ef)
 
 ## Goals
 - Getting familiar with the JUCE framework

@@ -32,10 +32,11 @@ cmake --build cmake-build --target DemoRunner
 - POC
 
 ## Desired Input/Output:
-Arpeggiator
+- Arpeggiator
 [arp.webm](https://github.com/lagooneration/AudioPlugin_EQ/assets/142176950/052508c0-d88c-4062-91f9-1f93bf712027)
 ![arp](https://github.com/lagooneration/AudioPlugin_EQ/assets/142176950/941862a9-f043-4a8e-a339-ce4be806e70d)
-Bass
+
+- Bass
 [bass.webm](https://github.com/lagooneration/AudioPlugin_EQ/assets/142176950/7a749e6d-4fb8-47bc-84e3-95808ddf4d5f)
 ![bass](https://github.com/lagooneration/AudioPlugin_EQ/assets/142176950/a343f599-ce83-4289-bd2f-398f10b98f75)
 

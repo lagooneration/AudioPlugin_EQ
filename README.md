@@ -21,7 +21,6 @@ cmake --build cmake-build --target DemoRunner
 - [Theory](https://www.youtube.com/@akashmurthy/playlists) - Youtube playlist for DSP and audio programming. (GOD LEVEL Explanation)  
 
 ## Overview
-- Color coded description of the EQ knobs
 ![plugin_f](https://github.com/lagooneration/AudioPlugin_EQ/assets/142176950/a4cabb4d-4d2d-45ac-ba41-aa868ff407ef)
 
 ## Goals

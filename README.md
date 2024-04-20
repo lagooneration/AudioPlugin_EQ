@@ -31,4 +31,17 @@ cmake --build cmake-build --target DemoRunner
 - Finding a way to incorporate both audios to display on a single display (with a differentiating parameter like color)
 - POC
 
+## Desired Input/Output:
+Arpeggiator
+[arp.webm](https://github.com/lagooneration/AudioPlugin_EQ/assets/142176950/052508c0-d88c-4062-91f9-1f93bf712027)
+![arp](https://github.com/lagooneration/AudioPlugin_EQ/assets/142176950/941862a9-f043-4a8e-a339-ce4be806e70d)
+Bass
+[bass.webm](https://github.com/lagooneration/AudioPlugin_EQ/assets/142176950/7a749e6d-4fb8-47bc-84e3-95808ddf4d5f)
+![bass](https://github.com/lagooneration/AudioPlugin_EQ/assets/142176950/a343f599-ce83-4289-bd2f-398f10b98f75)
+
+- Result
+Supposed to be distinguishable
+![combined](https://github.com/lagooneration/AudioPlugin_EQ/assets/142176950/b2d11f31-6fab-40f0-961e-02f67cf8cf63)
+
+
   ## Remarks
